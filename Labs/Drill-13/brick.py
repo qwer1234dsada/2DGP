@@ -5,6 +5,10 @@ from pico2d import *
 import game_framework
 import game_world
 
+global brick_x
+brick_x = 0
+global brick_speed
+brick_speed = 0
 
 class Brick:
     def __init__(self):
@@ -13,6 +17,8 @@ class Brick:
         self.speed = 200 # 200 pixel per second
 
     def update(self):
+        global brick_x
+        global brick_speed
         self.x += game_framework.frame_time * self.speed
         if self.x > 1600:
             self.x = 1600
@@ -21,6 +27,8 @@ class Brick:
             self.x = 0
             self.speed = -self.speed
 
+        brick_x = self.x
+        brick_speed = self.speed
 
 
     def draw(self):

@@ -84,7 +84,8 @@ def update():
         if collide(ball, boy):
             balls.remove(ball)
             game_world.remove_object(ball)
-
+        if collide(ball, brick):
+            ball.brickstop()
 
 def draw():
     clear_canvas()

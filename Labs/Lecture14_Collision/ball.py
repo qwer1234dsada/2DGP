@@ -12,12 +12,12 @@ class Ball:
         self.x, self.y, self.fall_speed = random.randint(0, 1600-1), 60, 0
 
     def get_bb(self):
-        # fill here
-        return 0,0,0,0
+        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
     def draw(self):
         self.image.draw(self.x, self.y)
-        # fill here for draw
+        draw_rectangle(*self.get_bb())
+
 
     def update(self):
         self.y -= self.fall_speed * game_framework.frame_time
