@@ -85,7 +85,10 @@ def update():
             balls.remove(ball)
             game_world.remove_object(ball)
         if collide(ball, brick):
-            ball.brickstop()
+            ball.stop()
+        if collide(ball,ball):
+            if ball.falldown_check == 1:
+                ball.brickstop()
 
 def draw():
     clear_canvas()

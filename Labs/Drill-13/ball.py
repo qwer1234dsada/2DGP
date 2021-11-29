@@ -14,6 +14,7 @@ class Ball:
             Ball.image = load_image('ball21x21.png')
         self.x, self.y, self.fall_speed = random.randint(0, 1600-1), 600, random.randint(Ball.MIN_FALL_SPEED, Ball.MAX_FALL_SPEED)
         self.falldown_check = 0
+        self.set_parent = None
 
     def get_bb(self):
         # fill here
@@ -28,14 +29,14 @@ class Ball:
     def update(self):
         if self.falldown_check == 1:
             self.x += game_framework.frame_time * brick.brick_speed
+        else:
+            self.x = self.x
         self.y -= self.fall_speed * game_framework.frame_time
 
 
     def stop(self):
         self.fall_speed = 0
 
-    def brickstop(self):
-        self.falldown_check = 1
-        self.fall_speed = 0
-
+    def set_parent(self, brick):
+        self.set_parent = brick
 
